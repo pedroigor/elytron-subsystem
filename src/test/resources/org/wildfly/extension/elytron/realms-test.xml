@@ -7,5 +7,10 @@
         <filesystem-realm name="FilesystemRealm" levels="2">
             <file path="filesystem-realm" relative-to="jboss.server.config.dir" />
         </filesystem-realm>
+
+        <!-- A configuration using the defaults for file/relative-to -->
+        <filesystem-realm name="DefaultConfigFilesystemRealm">
+            <file path="/default-config-filesystem-realm.data"/>
+        </filesystem-realm>
     </security-realms>
 </subsystem>

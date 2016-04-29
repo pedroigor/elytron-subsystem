@@ -45,6 +45,7 @@ import org.jboss.as.controller.registry.ManagementResourceRegistration;
 import org.jboss.as.controller.registry.OperationEntry;
 import org.jboss.as.controller.services.path.PathManager;
 import org.jboss.as.controller.services.path.PathManagerService;
+import org.jboss.as.server.ServerEnvironment;
 import org.jboss.dmr.ModelNode;
 import org.jboss.dmr.ModelType;
 import org.jboss.msc.service.ServiceBuilder;
@@ -75,6 +76,7 @@ class FileSystemRealmDefinition extends SimpleResourceDefinition {
 
     static final SimpleAttributeDefinition RELATIVE_TO =
             new SimpleAttributeDefinitionBuilder(ElytronDescriptionConstants.RELATIVE_TO, FileAttributeDefinitions.RELATIVE_TO)
+                    .setDefaultValue(new ModelNode().set(ServerEnvironment.SERVER_DATA_DIR))
                     .setAttributeGroup(ElytronDescriptionConstants.FILE)
                     .build();
 

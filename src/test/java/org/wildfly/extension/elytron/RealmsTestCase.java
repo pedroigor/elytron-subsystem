@@ -91,6 +91,19 @@ public class RealmsTestCase extends AbstractSubsystemTest {
         testModifiability(securityRealm, 3);
     }
 
+    @Test
+    public void testFilesystemRealmWithDefaultConfig() throws Exception {
+        KernelServices services = super.createKernelServicesBuilder(new TestEnvironment()).setSubsystemXmlResource("realms-test.xml").build();
+
+        if (!services.isSuccessfulBoot()) {
+            Assert.fail(services.getBootError().toString());
+        }
+
+        ServiceName serviceName = Capabilities.SECURITY_REALM_RUNTIME_CAPABILITY.getCapabilityServiceName("DefaultConfigFilesystemRealm");
+        ModifiableSecurityRealm securityRealm = (ModifiableSecurityRealm) services.getContainer().getService(serviceName).getValue();
+        Assert.assertNotNull(securityRealm);
+    }
+
     private void testModifiability(ModifiableSecurityRealm securityRealm, int expectedCount) throws Exception {
         // create identity
         ModifiableRealmIdentity identity1 = securityRealm.getRealmIdentityForUpdate("createdUser", null, null);

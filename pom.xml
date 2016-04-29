@@ -330,6 +330,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.wildfly.core</groupId>
+            <artifactId>wildfly-server</artifactId>
+            <version>${version.wildfly.core}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- TEST Dependencies -->
         <dependency>
             <groupId>org.wildfly.core</groupId>

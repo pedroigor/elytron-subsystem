@@ -19,6 +19,7 @@ package org.wildfly.extension.elytron;
 
 import mockit.Mock;
 import mockit.MockUp;
+import org.jboss.as.server.ServerEnvironment;
 import org.jboss.as.subsystem.test.AdditionalInitialization;
 import org.jboss.as.subsystem.test.ControllerInitializer;
 
@@ -45,7 +46,8 @@ class TestEnvironment extends AdditionalInitialization {
         }
 
         try {
-            initializer.addPath("jboss.server.config.dir", getClass().getResource(".").getFile(), null);
+            initializer.addPath(ServerEnvironment.SERVER_CONFIG_DIR, getClass().getResource(".").getFile(), null);
+            initializer.addPath(ServerEnvironment.SERVER_DATA_DIR, getClass().getResource(".").getFile(), null);
         } catch (Exception e) {
             throw new RuntimeException("Could not create test config directory", e);
         }
