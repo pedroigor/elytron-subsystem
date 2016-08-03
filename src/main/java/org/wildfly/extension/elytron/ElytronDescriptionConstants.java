@@ -45,6 +45,7 @@ interface ElytronDescriptionConstants {
     String ATTRIBUTE = "attribute";
     String ATTRIBUTE_MAPPING = "attribute-mapping";
     String ATTRIBUTES = "attributes";
+    String AUDIENCE = "audience";
     String AUTHENTICATION_LEVEL = "authentication-level";
     String AUTHENTICATION_OPTIONAL = "authentication-optional";
     String AUTHENTICATION_QUERY = "authentication-query";
@@ -144,6 +145,7 @@ interface ElytronDescriptionConstants {
 
     String JDBC_REALM = "jdbc-realm";
     String JOINER = "joiner";
+    String JWT = "jwt";
 
     String KERBEROS_SECURITY_FACTORY = "kerberos-security-factory";
     String KEY = "key";
@@ -222,6 +224,7 @@ interface ElytronDescriptionConstants {
     String PREFIX = "prefix";
     String PRINCIPAL = "principal";
     String PRINCIPALS = "principals";
+    String PRINCIPAL_CLAIM = "principal-claim";
     String PRINCIPAL_DECODER = "principal-decoder";
     String PRINCIPAL_DECODERS = "principal-decoders";
     String PRINCIPAL_QUERY = "principal-query";
@@ -315,6 +318,7 @@ interface ElytronDescriptionConstants {
     String TARGET_NAME = "target-name";
     String TLS = "tls";
     String TO = "to";
+    String TOKEN_REALM = "token-realm";
     String TRUST_MANAGER = "trust-manager";
     String TRUST_MANAGERS = "trust-managers";
     String TRUSTED_SECURITY_DOMAINS = "trusted-security-domains";
