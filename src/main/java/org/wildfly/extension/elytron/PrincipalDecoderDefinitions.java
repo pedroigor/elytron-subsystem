@@ -155,7 +155,7 @@ class PrincipalDecoderDefinitions {
 
             @Override
             protected ValueSupplier<PrincipalDecoder> getValueSupplier(ServiceBuilder<PrincipalDecoder> serviceBuilder,
-                                                                       OperationContext context, ModelNode model) throws OperationFailedException {
+                                                                       ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
                 final String joiner = JOINER.resolveModelAttribute(context, model).asString();
                 final List<String> decoders = PRINCIPAL_DECODERS.unwrap(context, model);
 

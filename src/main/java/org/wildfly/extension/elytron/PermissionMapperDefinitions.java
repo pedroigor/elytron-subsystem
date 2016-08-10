@@ -50,6 +50,8 @@ import org.jboss.modules.Module;
 import org.jboss.modules.ModuleIdentifier;
 import org.jboss.modules.ModuleLoadException;
 import org.jboss.msc.service.ServiceBuilder;
+import org.jboss.msc.service.ServiceName;
+import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.value.InjectedValue;
 import org.wildfly.extension.elytron.TrivialService.ValueSupplier;
@@ -134,7 +136,7 @@ class PermissionMapperDefinitions {
 
             @Override
             protected ValueSupplier<PermissionMapper> getValueSupplier(ServiceBuilder<PermissionMapper> serviceBuilder,
-                    OperationContext context, ModelNode model) throws OperationFailedException {
+                                                                       ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
 
                 final InjectedValue<PermissionMapper> leftPermissionMapperInjector = new InjectedValue<>();
                 final InjectedValue<PermissionMapper> rightPermissionMapperInjector = new InjectedValue<>();
@@ -160,7 +162,7 @@ class PermissionMapperDefinitions {
 
             @Override
             protected ValueSupplier<PermissionMapper> getValueSupplier(ServiceBuilder<PermissionMapper> serviceBuilder,
-                    OperationContext context, ModelNode model) throws OperationFailedException {
+                                                                       ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
 
                 final MappingMode mappingMode = MappingMode.valueOf(MappingMode.class, MAPPING_MODE.resolveModelAttribute(context, model).asString().toUpperCase(Locale.ENGLISH));
 

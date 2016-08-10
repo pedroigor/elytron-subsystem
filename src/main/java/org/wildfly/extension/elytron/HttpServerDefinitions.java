@@ -59,6 +59,7 @@ import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceController.State;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.ServiceRegistry;
+import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.value.InjectedValue;
 import org.wildfly.extension.elytron.TrivialService.ValueSupplier;
@@ -124,7 +125,7 @@ class HttpServerDefinitions {
 
             @Override
             protected ValueSupplier<HttpServerAuthenticationMechanismFactory> getValueSupplier(
-                    ServiceBuilder<HttpServerAuthenticationMechanismFactory> serviceBuilder, OperationContext context,
+                    ServiceBuilder<HttpServerAuthenticationMechanismFactory> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context,
                     ModelNode model) throws OperationFailedException {
 
                 final InjectedValue<HttpServerAuthenticationMechanismFactory> factoryInjector = new InjectedValue<HttpServerAuthenticationMechanismFactory>();
@@ -184,7 +185,7 @@ class HttpServerDefinitions {
 
             @Override
             protected ValueSupplier<HttpServerAuthenticationMechanismFactory> getValueSupplier(
-                    ServiceBuilder<HttpServerAuthenticationMechanismFactory> serviceBuilder, OperationContext context,
+                    ServiceBuilder<HttpServerAuthenticationMechanismFactory> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context,
                     ModelNode model) throws OperationFailedException {
 
                 String provider = asStringIfDefined(context, PROVIDER_LOADER, model);
@@ -214,7 +215,7 @@ class HttpServerDefinitions {
 
             @Override
             protected ValueSupplier<HttpServerAuthenticationMechanismFactory> getValueSupplier(
-                    ServiceBuilder<HttpServerAuthenticationMechanismFactory> serviceBuilder, OperationContext context,
+                    ServiceBuilder<HttpServerAuthenticationMechanismFactory> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context,
                     ModelNode model) throws OperationFailedException {
                 final String module = asStringIfDefined(context, MODULE, model);
 

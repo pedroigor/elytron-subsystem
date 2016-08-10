@@ -72,6 +72,7 @@ import org.jboss.msc.service.ServiceBuilder;
 import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceController.State;
 import org.jboss.msc.service.ServiceName;
+import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.value.InjectedValue;
 import org.wildfly.extension.elytron.TrivialService.ValueSupplier;
@@ -198,7 +199,7 @@ class SSLDefinitions {
         AbstractAddStepHandler add = new TrivialAddHandler<KeyManager[]>(KeyManager[].class, attributes, KEY_MANAGERS_RUNTIME_CAPABILITY) {
 
             @Override
-            protected ValueSupplier<KeyManager[]> getValueSupplier(ServiceBuilder<KeyManager[]> serviceBuilder, OperationContext context, ModelNode model) throws OperationFailedException {
+            protected ValueSupplier<KeyManager[]> getValueSupplier(ServiceBuilder<KeyManager[]> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
                 final String algorithm = ALGORITHM.resolveModelAttribute(context, model).asString();
                 final String password = asStringIfDefined(context, PASSWORD, model);
 
@@ -264,7 +265,7 @@ class SSLDefinitions {
         AbstractAddStepHandler add = new TrivialAddHandler<TrustManager[]>(TrustManager[].class, attributes, TRUST_MANAGERS_RUNTIME_CAPABILITY) {
 
             @Override
-            protected ValueSupplier<TrustManager[]> getValueSupplier(ServiceBuilder<TrustManager[]> serviceBuilder, OperationContext context, ModelNode model) throws OperationFailedException {
+            protected ValueSupplier<TrustManager[]> getValueSupplier(ServiceBuilder<TrustManager[]> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
                 final String algorithm = ALGORITHM.resolveModelAttribute(context, model).asString();
 
                 String providerLoader = asStringIfDefined(context, providerLoaderDefinition, model);
@@ -329,7 +330,7 @@ class SSLDefinitions {
         AbstractAddStepHandler add = new TrivialAddHandler<SSLContext>(SSLContext.class, attributes, SSL_CONTEXT_RUNTIME_CAPABILITY) {
 
             @Override
-            protected ValueSupplier<SSLContext> getValueSupplier(ServiceBuilder<SSLContext> serviceBuilder, OperationContext context, ModelNode model) throws OperationFailedException {
+            protected ValueSupplier<SSLContext> getValueSupplier(ServiceBuilder<SSLContext> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
                 String securityDomain = asStringIfDefined(context, SECURITY_DOMAIN, model);
                 String keyManagers = asStringIfDefined(context, KEY_MANAGERS, model);
                 String trustManagers = asStringIfDefined(context, TRUST_MANAGERS, model);

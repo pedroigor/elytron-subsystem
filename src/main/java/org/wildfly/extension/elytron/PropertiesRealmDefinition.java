@@ -62,6 +62,7 @@ import org.jboss.msc.service.ServiceBuilder;
 import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceController.State;
 import org.jboss.msc.service.ServiceName;
+import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.value.InjectedValue;
 import org.wildfly.extension.elytron.TrivialService.ValueSupplier;
@@ -125,7 +126,7 @@ class PropertiesRealmDefinition extends TrivialResourceDefinition {
 
         @Override
         protected ValueSupplier<SecurityRealm> getValueSupplier(ServiceBuilder<SecurityRealm> serviceBuilder,
-                OperationContext context, ModelNode model) throws OperationFailedException {
+                                                                ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
 
             final String usersPath;
             final String usersRelativeTo;

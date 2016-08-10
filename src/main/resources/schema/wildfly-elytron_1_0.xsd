@@ -2165,6 +2165,13 @@
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
+         <xs:attribute name="single-sign-on" type="xs:boolean" use="optional">
+             <xs:annotation>
+                 <xs:documentation>
+                     Enables signle sign-on to applications using this resource
+                 </xs:documentation>
+             </xs:annotation>
+         </xs:attribute>
         <xs:attribute name="http-server-mechanism-factory" type="xs:string" use="required">
             <xs:annotation>
                 <xs:documentation>

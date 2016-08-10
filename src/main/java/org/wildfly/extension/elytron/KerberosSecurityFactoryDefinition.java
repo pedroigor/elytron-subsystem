@@ -44,6 +44,8 @@ import org.jboss.as.controller.services.path.PathManagerService;
 import org.jboss.dmr.ModelNode;
 import org.jboss.dmr.ModelType;
 import org.jboss.msc.service.ServiceBuilder;
+import org.jboss.msc.service.ServiceName;
+import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.value.InjectedValue;
 import org.wildfly.extension.elytron.FileAttributeDefinitions.PathResolver;
@@ -104,7 +106,7 @@ class KerberosSecurityFactoryDefinition {
         TrivialAddHandler<SecurityFactory> add = new TrivialAddHandler<SecurityFactory>(SecurityFactory.class, attributes, SECURITY_FACTORY_CREDENTIAL_RUNTIME_CAPABILITY) {
 
             @Override
-            protected ValueSupplier<SecurityFactory> getValueSupplier(ServiceBuilder<SecurityFactory> serviceBuilder, OperationContext context, ModelNode model) throws OperationFailedException {
+            protected ValueSupplier<SecurityFactory> getValueSupplier(ServiceBuilder<SecurityFactory> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException {
                 final String principal = PRINCIPAL.resolveModelAttribute(context, model).asString();
                 final int minimumRemainingLifetime = MINIMUM_REMAINING_LIFETIME.resolveModelAttribute(context, model).asInt();
                 final int requestLifetime = REQUEST_LIFETIME.resolveModelAttribute(context, model).asInt();

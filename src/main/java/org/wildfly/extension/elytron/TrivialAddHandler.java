@@ -74,7 +74,7 @@ abstract class TrivialAddHandler<T> extends BaseAddHandler {
             serviceBuilder.addAliases(runtimeCapabilities[i].fromBaseCapability(address).getCapabilityServiceName());
         }
 
-        trivialService.setValueSupplier(getValueSupplier(serviceBuilder, context, resource.getModel()));
+        trivialService.setValueSupplier(getValueSupplier(serviceBuilder, serviceTarget, mainName, address, context, resource.getModel()));
 
         installedForResource(commonDependencies(serviceBuilder)
                 .setInitialMode(initialMode)
@@ -83,6 +83,6 @@ abstract class TrivialAddHandler<T> extends BaseAddHandler {
 
     protected void installedForResource(ServiceController<T> serviceController, Resource resource) {}
 
-    protected abstract ValueSupplier<T> getValueSupplier(ServiceBuilder<T> serviceBuilder, OperationContext context, ModelNode model) throws OperationFailedException;
+    protected abstract ValueSupplier<T> getValueSupplier(ServiceBuilder<T> serviceBuilder, ServiceTarget serviceTarget, ServiceName mainName, String address, OperationContext context, ModelNode model) throws OperationFailedException;
 
 }

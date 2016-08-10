@@ -310,6 +310,7 @@ interface ElytronDescriptionConstants {
     String SIMPLE_PERMISSION_MAPPER = "simple-permission-mapper";
     String SIMPLE_REGEX_REALM_MAPPER = "simple-regex-realm-mapper";
     String SIMPLE_ROLE_DECODER = "simple-role-decoder";
+    String SINGLE_SIGN_ON = "single-sign-on";
     String SIZE = "size";
     String SQL = "sql";
     String SSL_SESSION = "ssl-session";

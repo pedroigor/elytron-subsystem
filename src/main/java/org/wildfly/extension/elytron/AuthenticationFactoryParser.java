@@ -47,6 +47,7 @@ import static org.wildfly.extension.elytron.ElytronDescriptionConstants.REALM_NA
 import static org.wildfly.extension.elytron.ElytronDescriptionConstants.SASL_AUTHENTICATION_FACTORY;
 import static org.wildfly.extension.elytron.ElytronDescriptionConstants.SASL_SERVER_FACTORY;
 import static org.wildfly.extension.elytron.ElytronDescriptionConstants.SECURITY_DOMAIN;
+import static org.wildfly.extension.elytron.ElytronDescriptionConstants.SINGLE_SIGN_ON;
 import static org.wildfly.extension.elytron.ElytronSubsystemParser.verifyNamespace;
 
 import java.util.Arrays;
@@ -213,6 +214,9 @@ class AuthenticationFactoryParser {
                     case SECURITY_DOMAIN:
                         AuthenticationFactoryDefinitions.BASE_SECURITY_DOMAIN_REF.parseAndSetParameter(value, addOperation, reader);
                         break;
+                    case SINGLE_SIGN_ON:
+                        AuthenticationFactoryDefinitions.SINGLE_SIGN_ONE.parseAndSetParameter(value, addOperation, reader);
+                        break;
                     default:
                         throw unexpectedAttribute(reader, i);
                 }
@@ -315,6 +319,7 @@ class AuthenticationFactoryParser {
                 writer.writeAttribute(NAME, name);
                 AuthenticationFactoryDefinitions.HTTP_SERVER_MECHANISM_FACTORY.marshallAsAttribute(configuration, writer);
                 AuthenticationFactoryDefinitions.BASE_SECURITY_DOMAIN_REF.marshallAsAttribute(configuration, writer);
+                AuthenticationFactoryDefinitions.SINGLE_SIGN_ONE.marshallAsAttribute(configuration, writer);
                 writeMechanismConfiguration(configuration, writer);
                 writer.writeEndElement();
             }
